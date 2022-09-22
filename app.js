@@ -5,7 +5,7 @@ const _ = require("lodash");
 
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/todolistDB");
+mongoose.connect("mongodb+srv://admin-abhigyan:karolytakacs@cluster0.3fevsny.mongodb.net/todolistDB");
 
 app.set("view engine", "ejs");
 
@@ -52,6 +52,7 @@ app.get("/", function (req, res) {
       res.redirect("/");
     } else {
       res.render("list", { listTitle: "Today", newListItems: foundItems });
+      
     }
   });
 });
@@ -66,7 +67,6 @@ app.post("/", function (req, res) {
 
   if(listName === "Today"){
     item.save();
-
     res.redirect("/");
   }else{
     List.findOne({name: listName}, function(err, foundList){
