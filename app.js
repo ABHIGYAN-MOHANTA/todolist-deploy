@@ -2,10 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+require("dotenv").config();
 
 const app = express();
 
-mongoose.connect("mongodb+srv://admin-abhigyan:karolytakacs@cluster0.3fevsny.mongodb.net/todolistDB");
+mongoose.connect(process.env.MONGO_DB_URL);
 
 app.set("view engine", "ejs");
 
